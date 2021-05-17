@@ -5,7 +5,7 @@ const nextBtn = document.querySelector('#next')
 
 const audio = document.querySelector('#audio')
 const progress = document.querySelector('.progress')
-const ProgressContainer = document.querySelector('.progress-container')
+const progressContainer = document.querySelector('.progress-container')
 const title = document.querySelector('#title')
 const cover = document.querySelector('#cover')
 
@@ -15,7 +15,7 @@ const cover = document.querySelector('#cover')
 const songs = ['hey', 'summer', 'ukulele', 'ainebi', 'tamada']
 
 //keep track of songs
-let songIndex = 1
+let songIndex = 2
 
 // Initially load song info DOM
 
@@ -44,6 +44,15 @@ function pauseSong(){
     audio.pause()
 }
 
+function prevSong(){
+
+}
+
+function nextSong(){
+
+}
+
+
 //Event listeners
 playBtn.addEventListener('click', ()=> {
     const isPlaying = musicContainer.classList.contains('play')
@@ -54,3 +63,13 @@ playBtn.addEventListener('click', ()=> {
         playSong()
     }
 })
+
+
+
+// Change song
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+
+// Click on progress bar
+progressContainer.addEventListener('click', setProgress);
