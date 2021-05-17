@@ -1,7 +1,8 @@
-const misicContainer = document.querySelector('.music-container')
+const musicContainer = document.querySelector('.music-container')
 const playBtn = document.querySelector('#play')
 const prevBtn = document.querySelector('#prev')
 const nextBtn = document.querySelector('#next')
+
 const audio = document.querySelector('#audio')
 const progress = document.querySelector('.progress')
 const ProgressContainer = document.querySelector('.progress-container')
@@ -31,10 +32,16 @@ function playSong(){
 musicContainer.classList.add('play')
 playBtn.querySelector('i.fas').classList.remove('fa-play')
 playBtn.querySelector('i.fas').classList.add('fa-pause')
+
+audio.play()
 }
 
 function pauseSong(){
+    musicContainer.classList.remove('play')
+    playBtn.querySelector('i.fas').classList.add('fa-play')
+    playBtn.querySelector('i.fas').classList.remove('fa-pause')
 
+    audio.pause()
 }
 
 //Event listeners
