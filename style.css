@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -8,18 +7,12 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Lato', sans-serif;
-    background-image: linear-gradient(
-        0deg,
-        rgba(247, 247, 247, 1) 23.8%,
-        rgba(247, 189, 189, 1) 92%,
-    );
+    background-image: linear-gradient( 0deg, rgba(247, 247, 247, 1) 23.8%, rgba(247, 189, 189, 1) 92%, );
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-
 
 .music-container {
     background-color: #fff;
@@ -30,14 +23,14 @@ body {
     position: relative;
     margin: 100px 0;
     z-index: 10;
-  }
-  
-  .img-container {
+}
+
+.img-container {
     position: relative;
     width: 110px;
-  }
-  
-  .img-container::after {
+}
+
+.img-container::after {
     content: '';
     background-color: #fff;
     border-radius: 50%;
@@ -47,9 +40,9 @@ body {
     width: 20px;
     height: 20px;
     transform: translate(-50%, 50%);
-  }
-  
-  .img-container img {
+}
+
+.img-container img {
     border-radius: 50%;
     object-fit: cover;
     height: 110px;
@@ -58,32 +51,30 @@ body {
     bottom: 0;
     left: 0;
     animation: rotate 3s linear infinite;
-  
     animation-play-state: paused;
-  }
-  
-  .music-container.play .img-container img {
+}
+
+.music-container.play .img-container img {
     animation-play-state: running;
-  }
-  
-  @keyframes rotate {
+}
+
+@keyframes rotate {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-  
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
-  .navigation {
+}
+
+.navigation {
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
-  }
-  
-  .action-btn {
+}
+
+.action-btn {
     background-color: #fff;
     border: 0;
     color: #dfdbdf;
@@ -91,18 +82,18 @@ body {
     cursor: pointer;
     padding: 10px;
     margin: 0 20px;
-  }
-  
-  .action-btn.action-btn-big {
+}
+
+.action-btn.action-btn-big {
     color: #cdc2d0;
     font-size: 30px;
-  }
-  
-  .action-btn:focus {
+}
+
+.action-btn:focus {
     outline: 0;
-  }
-  
-  .music-info {
+}
+
+.music-info {
     background-color: rgba(238, 190, 224, 0.5);
     border-radius: 15px 15px 0 0;
     position: absolute;
@@ -114,30 +105,30 @@ body {
     transform: translateY(0%);
     transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     z-index: 0;
-  }
-  
-  .music-container.play .music-info {
+}
+
+.music-container.play .music-info {
     opacity: 1;
     transform: translateY(-100%);
-  }
-  
-  .music-info h4 {
+}
+
+.music-info h4 {
     margin: 0;
-  }
-  
-  .progress-container {
-    background: rgb(185, 132, 192);
+}
+
+.progress-container {
+    background: #fff;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
     height: 4px;
     width: 100%;
-  }
-  
-  .progress {
-    background-color: #ca95a1;
+}
+
+.progress {
+    background-color: #a8183c;
     border-radius: 5px;
     height: 100%;
     width: 0%;
     transition: width 0.1s linear;
-  }
+}

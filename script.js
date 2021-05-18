@@ -24,19 +24,19 @@ loadSong(songs[songIndex])
 // Update song details
 function loadSong(song) {
     title.innerText = song
-    audio.src =`music/${song}.mp3`
-    cover.src =`images/${song}.jpg`
+    audio.src = `music/${song}.mp3`
+    cover.src = `images/${song}.jpg`
 }
 
-function playSong(){
-musicContainer.classList.add('play')
-playBtn.querySelector('i.fas').classList.remove('fa-play')
-playBtn.querySelector('i.fas').classList.add('fa-pause')
+function playSong() {
+    musicContainer.classList.add('play')
+    playBtn.querySelector('i.fas').classList.remove('fa-play')
+    playBtn.querySelector('i.fas').classList.add('fa-pause')
 
-audio.play()
+    audio.play()
 }
 
-function pauseSong(){
+function pauseSong() {
     musicContainer.classList.remove('play')
     playBtn.querySelector('i.fas').classList.add('fa-play')
     playBtn.querySelector('i.fas').classList.remove('fa-pause')
@@ -44,20 +44,44 @@ function pauseSong(){
     audio.pause()
 }
 
-function prevSong(){
+function prevSong() {
+    songIndex--;
 
+    if (songIndex < 0) {
+        songIndex = songs.length - 1
+    }
+    loadSong(songs[songIndex]);
+
+    playSong();
 }
 
-function nextSong(){
+function nextSong() {
+    songIndex++;
 
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+
+    loadSong(songs[songIndex]);
+
+    playSong();
 }
 
+
+
+// Update progress bar
+function updateProgress(e) {
+
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+}
 
 //Event listeners
-playBtn.addEventListener('click', ()=> {
+playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play')
 
-    if(isPlaying) {
+    if (isPlaying) {
         pauseSong()
     } else {
         playSong()
@@ -71,5 +95,7 @@ prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
 
-// Click on progress bar
-progressContainer.addEventListener('click', setProgress);
+
+
+// Time of song
+audio.addEventListener('timeupdate', updateProgress);
