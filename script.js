@@ -8,11 +8,12 @@ const progress = document.querySelector('.progress')
 const progressContainer = document.querySelector('.progress-container')
 const title = document.querySelector('#title')
 const cover = document.querySelector('#cover')
+const durTime = document.querySelector('#durTime');
 
 
 // Song titles
 
-const songs = ['hey', 'summer', 'ukulele', 'ainebi', 'tamada']
+const songs = ['hey', 'summer', 'ukulele', 'ainebi']
 
 //keep track of songs
 let songIndex = 2
@@ -68,7 +69,6 @@ function nextSong() {
 }
 
 
-
 // Update progress bar
 function updateProgress(e) {
 
@@ -76,6 +76,19 @@ function updateProgress(e) {
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
 }
+
+
+//set progres width where it is the song
+
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX
+    const duration = audio.duration
+
+
+    audio.currentTime = (clickX / width) * duration
+}
+
 
 //Event listeners
 playBtn.addEventListener('click', () => {
@@ -89,7 +102,6 @@ playBtn.addEventListener('click', () => {
 })
 
 
-
 // Change song
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
@@ -99,3 +111,9 @@ nextBtn.addEventListener('click', nextSong);
 
 // Time of song
 audio.addEventListener('timeupdate', updateProgress);
+
+//set progress
+progressContainer.addEventListener('click', setProgress)
+
+//song ends
+audio.addEventListener('ended', nextSong)
